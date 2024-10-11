@@ -1,0 +1,45 @@
+.confirm-dialog {
+  &__wrapper {
+    display: flex;
+    margin: 10px auto;
+
+    gap: 15px;
+  }
+
+  &__description {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: black;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 15px;
+    position: absolute;
+    bottom: 10px;
+    margin: auto;
+    button {
+      padding: 4px 15px;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 15px;
+      line-height: 28px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .btn-cancel {
+      border: 1px solid color(accent, 400);
+      background: color(accent, 400);
+      color: color(accent, 200);
+    }
+
+    .btn-submit {
+      border: 1px solid color(accent, 300);
+      background: color(accent, 100);
+      color: color(accent, 500);
+    }
+  }
+}

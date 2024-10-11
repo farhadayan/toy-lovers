@@ -1,0 +1,13 @@
+<div class="confirm-dialog__wrapper">
+  <div class="confirm-dialog__description">
+    {{ dialogData.toy.toyName + " is sold" }}, {{ dialogData.description }}
+  </div>
+  <div *ngIf="dialogData.buttonsVisible" class="confirm-dialog__actions">
+    <button class="btn-cancel" (click)="onCancel()">
+      {{ dialogData.cancelButtonText }}
+    </button>
+    <button class="btn-submit" (click)="onConfirm()">
+      {{ dialogData.confirmButtonText }}
+    </button>
+  </div>
+</div>

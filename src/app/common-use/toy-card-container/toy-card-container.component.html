@@ -1,0 +1,171 @@
+<div
+  class="toy-browse"
+  fxLayout="{{ source !== 'sell' ? 'row wrap' : 'column' }}"
+  fxLayout.xs="column"
+  fxLayoutAlign="space-around"
+  fxLayoutGap="12px"
+>
+  <mat-card class="empty-container" *ngIf="source === 'sell'">
+    <button mat-raised-button (click)="addEditToy(null)">Add more</button>
+    <!-- Images upload-->
+
+    <!-- <mat-card-header>
+      <input
+        type="file"
+        accept="image/*"
+        multiple
+        (change)="selectFiles($event)"
+      />
+      <input type="text" />
+    </mat-card-header>
+
+    <mat-card-footer>
+      <button mat-raised-button [disabled]="!selectedFiles" (click)="addToy()">
+        Save
+      </button>
+    </mat-card-footer>
+
+    <div>
+      @for (preview of previews; track $index) {
+      <img [src]="preview" class="preview" />
+      }
+    </div>
+
+    @if (message.length) {
+    <div class="alert alert-secondary my-3" role="alert">
+      <ul>
+        @for (msg of message; track $index) {
+        <li>{{ msg }}</li>
+        }
+      </ul>
+    </div>
+    }
+
+    <div class="card mt-3">
+      <ul class="list-group list-group-flush">
+        @for (image of imageInfos | async; track image.name) {
+        <li class="list-group-item">
+          <p>
+            <a href="{{ image.url }}">{{ image.name }}</a>
+          </p>
+          <img src="{{ image.url }}" alt="{{ image.name }}" height="80px" />
+        </li>
+        }
+      </ul>
+    </div> -->
+  </mat-card>
+  <mat-card
+    *ngFor="let toy of toysInfo; let i = index"
+    fxFlex="{{
+      toysInfo.length % 3 > 0 ? '0 1 calc(33%-25px)' : 'calc(50%-25px)'
+    }}"
+    fxFlex.sm="calc(50%-50px)"
+    (click)="toyDetails(toy)"
+  >
+    <mat-card-header>
+      <mat-card-title
+        >{{ toy.toyName }}: {{ toy.ageType }},
+        <b>{{ toy.toyPrice | currency : toy.currency : "symbol" }}</b>
+      </mat-card-title>
+      <div class="all-notifications">
+        <mat-card-subtitle *ngIf="source === 'sell'">
+          <mat-icon [matTooltip]="'New notifications'">notifications</mat-icon>
+        </mat-card-subtitle>
+        <mat-card-subtitle *ngIf="source === 'sell'">
+          <mat-icon
+            matTooltip="Edit"
+            (click)="$event.stopPropagation(); addEditToy(toy)"
+            >edit</mat-icon
+          >
+        </mat-card-subtitle>
+
+        <mat-card-subtitle>
+          <mat-icon
+            [ngClass]="toy.isLike ? 'like-active' : 'like'"
+            [matTooltip]="'Tasty'"
+            (click)="$event.stopPropagation(); toggleLike(toy)"
+            >thumb_up_alt</mat-icon
+          >
+          <span
+            *ngIf="toy.reaction.numberLikes"
+            matBadge="{{ toy.reaction.numberLikes }}"
+            matBadgePosition="before"
+            matBadgeColor="accent"
+          >
+          </span>
+        </mat-card-subtitle>
+        <mat-card-subtitle>
+          <mat-icon
+            [ngClass]="toy.isLove ? 'favorite-active' : 'favorite'"
+            [matTooltip]="'Awesome!!!'"
+            (click)="$event.stopPropagation(); toggleFavorite(toy)"
+            >favorite</mat-icon
+          >
+          <span
+            *ngIf="toy.reaction.numberLoves > 0"
+            matBadge="{{ toy.reaction.numberLoves }}"
+            matBadgePosition="before"
+            matBadgeColor="accent"
+          >
+          </span>
+        </mat-card-subtitle>
+
+        <mat-card-subtitle
+          *ngIf="source === 'sell'"
+          (click)="$event.stopPropagation()"
+        >
+          <mat-slide-toggle
+            [checked]="toy.active"
+            (change)="statusChanged(toy, $event.checked)"
+          >
+          </mat-slide-toggle>
+        </mat-card-subtitle>
+      </div>
+    </mat-card-header>
+    <img
+      mat-card-sm-image
+      [src]="toy.imageUrl"
+      alt="photo of {{ toy.toyName }}"
+    />
+    <mat-card-content>
+      <p>Ingredients: {{ toy.detailsOfToy }}</p>
+    </mat-card-content>
+    <div class="buttons" *ngIf="source !== 'archived'">
+      <button
+        mat-flat-button
+        (click)="buyToy(toy); $event.stopPropagation()"
+        *ngIf="source === 'browse'"
+      >
+        <span>Buy</span>
+        <mat-icon>money</mat-icon>
+      </button>
+      <button mat-flat-button>
+        <span>Send offer</span>
+        <mat-icon>textsms</mat-icon>
+      </button>
+      <button mat-flat-button>
+        <span>Swap toy</span>
+        <mat-icon>swap_horiz</mat-icon>
+      </button>
+
+      <button
+        mat-flat-button
+        (click)="$event.stopPropagation(); shareToy(toy)"
+        [matMenuTriggerFor]="rowActions"
+      >
+        <span>Share a friend</span>
+        <mat-icon>share</mat-icon>
+      </button>
+
+      <mat-menu #rowActions class="context">
+        <button mat-list-item *ngFor="let link of shareLinks">
+          <mat-icon>
+            <a [href]="link.link" target="_blank" rel="noreferrer">
+              {{ link.title }}</a
+            >
+          </mat-icon>
+        </button>
+      </mat-menu>
+    </div>
+  </mat-card>
+</div>

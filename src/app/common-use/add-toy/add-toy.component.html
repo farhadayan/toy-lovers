@@ -1,0 +1,108 @@
+<div class="toyform">
+  <div class="close-dialog-box">
+    <app-close-dialog (click)="closeDialog()"></app-close-dialog>
+  </div>
+
+  <ng-container>
+    <h1 class="mat-headline-5">Toy Information</h1>
+  </ng-container>
+
+  <form [formGroup]="toyForm">
+    <mat-form-field>
+      <label>Toy Name</label>
+      <input type="text" matInput formControlName="toyName" />
+      <mat-error *ngIf="toyForm.controls.toyName.errors">
+        Should not be empty
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select
+        multiple
+        placeholder="Toy type"
+        formControlName="toyType"
+        [(value)]="dialogData.ageType"
+      >
+        <mat-option *ngFor="let toy of toyTypes" [value]="toy.value">
+          {{ toy.title }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="toyForm.controls.toyType.errors">
+        Should not be empty
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <label>Ingrdients</label>
+      <textarea matInput formControlName="ingredients"></textarea>
+      <mat-error *ngIf="toyForm.controls.ingredients.errors">
+        Should not be empty
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select
+        multiple
+        formControlName="toyCountry"
+        placeholder="Toy origin"
+        [value]="dialogData.toyCountry"
+      >
+        <mat-option *ngFor="let country of countries" [value]="country.code">
+          {{ country.name }}
+        </mat-option>
+
+        <mat-error *ngIf="toyForm.controls.toyCountry.errors">
+          Should not be empty
+        </mat-error>
+      </mat-select>
+    </mat-form-field>
+    <!-- Images upload-->
+    <div class="images">
+      <label>Upload photos</label>
+      <input
+        type="file"
+        accept="image/*"
+        multiple
+        (change)="selectFiles($event)"
+        formControlName="toyImages"
+      />
+
+      <div>
+        @for (preview of previews; track $index) {
+        <img [src]="preview" class="preview" />
+        }
+      </div>
+
+      @if (message.length) {
+      <div class="alert alert-secondary my-3" role="alert">
+        <ul>
+          @for (msg of message; track $index) {
+          <li>{{ msg }}</li>
+          }
+        </ul>
+      </div>
+      }
+
+      <div class="card mt-3">
+        <ul class="list-group list-group-flush">
+          @for (image of imageInfos | async; track image.name) {
+          <li class="list-group-item">
+            <p>
+              <a href="{{ image.url }}">{{ image.name }}</a>
+            </p>
+            <img src="{{ image.url }}" alt="{{ image.name }}" height="80px" />
+          </li>
+          }
+        </ul>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+
+    <button
+      mat-raised-button
+      [disabled]="!selectedFiles || toyForm.invalid || toyForm.pristine"
+      (click)="saveToy()"
+    >
+      Save
+    </button>
+  </form>
+</div>

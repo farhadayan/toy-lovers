@@ -1,0 +1,156 @@
+<div
+  class="top-bar"
+  flex="100"
+  flex-md="50"
+  flex-gt-sm="25"
+  fxLayout.xs="column"
+>
+  <div class="navigation">
+    <button mat-button [matMenuTriggerFor]="menu">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <ng-container
+        *ngFor="let navItem of navigationConfig$ | async as navigationConfig"
+      >
+        <div
+          class="nav-item"
+          [routerLink]="navItem.link"
+          [routerLinkActive]="userState.fetchUserState() ? 'true' : 'false'"
+          [hidden]="!userState.fetchUserState() && navItem.link === 'my-page'"
+         >
+          <img [src]="navItem.icon" alt=""/>
+          <button mat-menu-item>{{ navItem.title }}</button>
+        </div>
+      </ng-container>
+    </mat-menu>
+
+   <div class="restaurant-title" (click)="loadHomePage()"> 
+  <img
+  class="restaurant-title"
+  src="/assets/images/SwapMe.png"
+  (click)="loadHomePage()"
+  (keydown)="loadHomePage()"
+  tabindex="0"
+  alt=""
+/>
+ </div> 
+  </div>
+
+
+
+  <div class="top-bar__search-content">
+    <form [formGroup]="searchForm">
+      <mat-form-field
+        appearance="outline"
+        class="top-bar__search-content__search-field"
+      >
+        <input
+          matInput
+          type="text"
+          placeholder="Search"
+          formControlName="query"
+        />
+        <mat-icon matSuffix>search</mat-icon>
+      </mat-form-field>
+      <mat-form-field
+        appearance="outline"
+        class="top-bar__search-content__search-field"
+      >
+        <input
+          matInput
+          type="text"
+          placeholder="Toy name"
+          formControlName="toy_name"
+        />
+      </mat-form-field>
+      <mat-form-field
+        appearance="outline"
+        class="top-bar__search-content__search-field"
+       >
+        <mat-select
+          placeholder="Country"
+          multiple
+          matInput
+          formControlName="toy_country"
+        >
+        <div
+        class="clear-btn"
+        (click)="clearCountry()"
+          *ngIf="searchForm.controls.toy_country.value?.length">
+              Clear
+        </div>
+          <mat-option
+            *ngFor="let country of countryList"
+            [value]="country.code"
+            >{{ country.name }}</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field
+        appearance="outline"
+        class="top-bar__search-content__search-field"
+       >
+        <mat-select
+          multiple
+          placeholder="Age"
+          formControlName="age_type"
+         >
+         <div
+         class="clear-btn"
+         (click)="clearAge()"
+           *ngIf="searchForm.controls.age_type.value?.length">
+           Clear
+         </div>
+          <mat-option *ngFor="let type of toyTypes" [value]="type.value">
+            {{ type.title }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </form>
+  </div>
+  <div class="login">
+    <ng-container
+      *ngIf="userState.userStateSignal() !== null; else notLoggedin"
+    >
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <img src="/assets/images/my-pic.png" alt=""/>
+        <mat-icon>keyboard_arrow_down</mat-icon>
+      </button>
+
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>
+          <mat-icon>user</mat-icon>
+          <span>Profile details</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>email</mat-icon>
+          <span>Email</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>notifications_off</mat-icon>
+          <span>Disable alerts</span>
+        </button>
+
+        <button mat-menu-item (click)="logout()">
+          <mat-icon>logout</mat-icon>
+          <span>Logout</span>
+        </button>
+      </mat-menu>
+    </ng-container>
+
+    <ng-template #notLoggedin>
+      <div class="login-register">
+        <!-- <button mat-icon-button>
+          <img src="/assets/images/avatar.png" />
+        </button> -->
+
+        <div class="loging">
+          <button mat-flat-button (click)="login()">Login</button>
+          <mat-divider vertical="true"></mat-divider>
+          <button mat-flat-button (click)="loadRegisterPage()">Register</button>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</div>

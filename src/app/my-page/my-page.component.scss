@@ -1,0 +1,20 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0;
+}
+.tabs {
+  width: 100%;
+  padding: 24px;
+  gap: 72px;
+}
+.thumbnail {
+  width: 100%;
+}
+
+.icon-image {
+  width: 24px;
+  height: 24px;
+  margin-right: 5px;
+}

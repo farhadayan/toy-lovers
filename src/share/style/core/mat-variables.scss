@@ -1,0 +1,211 @@
+@use "sass:map";
+@use "@angular/material" as mat;
+
+// COPIED FROM MATERIAL CORE
+$dark-primary-text: #242424;
+$light-primary-text: white;
+// COPIED FROM MATERIAL CORE
+:root {
+  --primary-default: 0, 119, 130;
+  --primary-medium: 136, 212, 215;
+  --primary-extra-light: 237, 249, 249;
+  --primary-light: 201, 240, 238;
+  --primary-dark: 0, 70, 84;
+  --primary-extra-dark: 17, 46, 51;
+  --success-default: 40, 134, 90;
+  --success-medium: 138, 208, 168;
+  --success-extra-light: 237, 249, 240;
+  --success-light: 192, 238, 208;
+  --success-dark: 23, 80, 56;
+  --success-extra-dark: 23, 47, 32;
+  --expose-default: 249, 187, 66;
+  --expose-medium: 255, 217, 143;
+  --expose-extra-light: 255, 246, 232;
+  --expose-light: 255, 238, 203;
+  --expose-dark: 110, 81, 54;
+  --expose-extra-dark: 81, 61, 22;
+  --warning-default: 208, 69, 85;
+  --warning-medium: 251, 169, 171;
+  --warning-extra-light: 255, 246, 244;
+  --warning-light: 253, 220, 220;
+  --warning-dark: 92, 48, 59;
+  --warning-extra-dark: 13, 3, 3;
+  --muted-default: 117, 117, 117;
+  --amplified-default: 23, 23, 23;
+  --greyscale-level-1: 23, 23, 23;
+  --greyscale-level-2: 77, 77, 77;
+  --greyscale-level-3: 117, 117, 117;
+  --greyscale-level-4: 153, 153, 153;
+  --greyscale-level-5: 201, 201, 201;
+  --greyscale-level-6: 242, 242, 242;
+  --greyscale-level-7: 255, 255, 255;
+}
+
+$primary: (
+  100: #e5f6f0,
+  300: #e5f6f0,
+  500: #4aa09b,
+  700: #158882,
+  contrast: (
+    300: $dark-primary-text,
+    500: $dark-primary-text,
+    700: $light-primary-text,
+  ),
+);
+
+$accent: (
+  100: #f7f7f7,
+  200: #eee,
+  300: #ccc,
+  400: #757575,
+  500: #242424,
+  700: #000,
+  contrast: (
+    100: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $dark-primary-text,
+    500: $light-primary-text,
+    700: $light-primary-text,
+  ),
+);
+
+$warn: (
+  50: #ffebee,
+  100: #ffcdd2,
+  200: #ef9a9a,
+  300: #e57373,
+  400: #ef5350,
+  500: #f44336,
+  600: #e53935,
+  700: #d32f2f,
+  800: #c62828,
+  900: #b71c1c,
+  A100: #ff8a80,
+  A200: #ff5252,
+  A400: #ff1744,
+  A700: #d50000,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $dark-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $light-primary-text,
+    A400: $light-primary-text,
+    A700: $light-primary-text,
+  ),
+);
+
+$success: (
+  50: #e8f5e9,
+  100: #c8e6c9,
+  200: #a5d6a7,
+  300: #81c784,
+  400: #66bb6a,
+  500: #4caf50,
+  600: #43a047,
+  700: #388e3c,
+  800: #2e7d32,
+  900: #1b5e20,
+  A100: #b9f6ca,
+  A200: #69f0ae,
+  A400: #00e676,
+  A700: #00c853,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $dark-primary-text,
+    500: $dark-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $dark-primary-text,
+    A400: $dark-primary-text,
+    A700: $dark-primary-text,
+  ),
+);
+
+$grey: (
+  50: #fafafa,
+  100: #f5f5f5,
+  200: #eeeeee,
+  300: #e0e0e0,
+  400: #ccc,
+  500: #9e9e9e,
+  600: #757575,
+  700: #4f4f4f,
+  800: #424242,
+  900: #242424,
+  A100: #ffffff,
+  A200: #eeeeee,
+  A400: #bdbdbd,
+  A700: #616161,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $dark-primary-text,
+    500: $dark-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $dark-primary-text,
+    A400: $dark-primary-text,
+    A700: $light-primary-text,
+  ),
+);
+
+$typography-config: mat.define-typography-config(
+  $font-family: '"GT Walsheim", sans-serif',
+  $headline-1:
+    mat.define-typography-level(32px, 40px, 500, '"GT Walsheim", sans-serif'),
+  $headline-2:
+    mat.define-typography-level(28px, 32px, 700, '"GT Walsheim", sans-serif'),
+  $headline-3:
+    mat.define-typography-level(28px, 32px, 500, '"GT Walsheim", sans-serif'),
+  $headline-4:
+    mat.define-typography-level(24px, 32px, 700, '"GT Walsheim", sans-serif'),
+  $headline-5:
+    mat.define-typography-level(24px, 32px, 500, '"GT Walsheim", sans-serif'),
+  $headline-6:
+    mat.define-typography-level(20px, 28px, 500, '"GT Walsheim", sans-serif'),
+  $subtitle-1:
+    mat.define-typography-level(18px, 24px, 700, '"GT Walsheim", sans-serif'),
+  $subtitle-2:
+    mat.define-typography-level(18px, 24px, 500, '"GT Walsheim", sans-serif'),
+  $body-1:
+    mat.define-typography-level(16px, 24px, 500, '"GT Walsheim", sans-serif'),
+  $body-2:
+    mat.define-typography-level(16px, 24px, 400, '"GT Walsheim", sans-serif'),
+  $caption:
+    mat.define-typography-level(13px, 16px, 400, '"GT Walsheim", sans-serif'),
+  $button:
+    mat.define-typography-level(16px, 16px, 400, '"GT Walsheim", sans-serif'),
+);
+
+
+$theme: mat.define-light-theme(
+  (
+    color: (
+      primary: mat.define-palette($primary),
+      accent: mat.define-palette($accent),
+      warn: mat.define-palette($warn),
+      success: mat.define-palette($success),
+      grey: mat.define-palette($grey),
+    ),
+    typography: $typography-config,
+  )
+);

@@ -1,0 +1,29 @@
+<div class="tabs"
+
+>
+  <mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>
+  <nav
+    mat-tab-nav-bar
+    [disableRipple]="true"
+    mat-stretch-tabs="false"
+    mat-align-tabs="center"
+    [tabPanel]="tabPanel"
+   >
+    <a
+      mat-tab-link
+      *ngFor="let navItem of navItems"
+      [routerLink]="[navItem.link]"
+      routerLinkActive
+      #rla="routerLinkActive"
+      [active]="rla.isActive"
+     >
+      <img src="{{ navItem.icon }}" class="icon-image" />
+      
+
+      {{ navItem.title }}
+    </a>
+  </nav>
+  <div class="tab-content">
+    <router-outlet />
+  </div>
+</div>

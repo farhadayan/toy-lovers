@@ -1,0 +1,8 @@
+<app-toy-card-container
+  [toysInfo]="myToysInfo"
+  source="sell"
+  (toyClicked)="toyDetails($event)"
+  (toyBuy)="buyToy($event)"
+  (toyStatus)="toyStatusChanged($event)"
+>
+</app-toy-card-container>

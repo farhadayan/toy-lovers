@@ -1,0 +1,164 @@
+$matButtonTheme: true !default;
+
+@if $matButtonTheme == true {
+  .mat-mdc-button-base {
+    &.mat-mdc-icon-button {
+      border: 1px solid color(accent, 300);
+      border-radius: 4px;
+      width: 36px;
+      height: 36px;
+      line-height: 24px;
+      padding: 5px;
+      background-color: transparent;
+
+      &.mat-accent {
+        background-color: #f6f6f6;
+        color: #242424;
+      }
+
+      &.no-border {
+        border: 0;
+      }
+
+      &.medium {
+        width: 30px;
+        height: 30px;
+        padding: 0;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      &.small {
+        width: 24px;
+        height: 24px;
+        padding: 0;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        .mat-icon {
+          transform: scale(0.75);
+        }
+      }
+
+      &[disabled] {
+        background-color: #f7f7f7;
+      }
+
+      .mat-mdc-button-persistent-ripple {
+        border-radius: 0;
+      }
+    }
+
+    &.mat-mdc-outlined-button {
+      height: 36px;
+
+      &[large] {
+        height: 46px;
+        padding: 12px 24px;
+      }
+
+      &.rtl {
+        direction: rtl;
+
+        > .mat-icon {
+          margin-right: -4px;
+          margin-left: 8px;
+        }
+      }
+
+      .mat-mdc-button-touch-target {
+        min-height: 36px;
+        height: 100%;
+      }
+
+      .mdc-button__label {
+        color: #242424;
+      }
+
+      &.mat-unthemed {
+        background-color: #fff;
+      }
+
+      &.mat-accent {
+        background-color: #f6f6f6;
+        border-color: #ccc;
+      }
+
+      &.large {
+        height: 54px;
+
+        .mat-mdc-button-touch-target {
+          min-height: 36px;
+          height: 100%;
+        }
+      }
+    }
+
+    &.mat-mdc-unelevated-button {
+      text-decoration: underline;
+
+      &[large] {
+        height: 46px;
+        padding: 12px 24px;
+      }
+
+      &.mat-primary {
+        text-decoration: none;
+        color: #fff;
+
+        &[disabled] {
+          color: #757575;
+        }
+      }
+
+      &.mat-accent {
+        text-decoration: none;
+        background-color: color(grey, 900);
+        color: #fff;
+
+        .mat-icon svg path {
+          fill: #fff;
+        }
+
+        &[disabled] {
+          opacity: 0.5;
+        }
+      }
+
+      &.large {
+        min-height: 48px;
+        padding: 0;
+      }
+
+      &.loading {
+        color: transparent;
+        position: relative;
+
+        &:before {
+          content: "";
+          width: 24px;
+          height: 24px;
+          border: 2px solid #fff;
+          border-bottom-color: transparent;
+          border-radius: 50%;
+          display: inline-block;
+          box-sizing: border-box;
+          animation: rotation 1s linear infinite;
+          position: absolute;
+          transform: translate(-50%, -50%);
+        }
+      }
+    }
+  }
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

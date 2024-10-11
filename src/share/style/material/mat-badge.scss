@@ -1,0 +1,9 @@
+.mat-badge {
+  position: relative;
+  margin-left: 5px;
+}
+
+.mat-badge-accent {
+  --mat-badge-background-color: rgba(183, 205, 250, 0.25);
+  --mat-badge-text-color: #242424;
+}

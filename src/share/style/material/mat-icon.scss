@@ -1,0 +1,52 @@
+$matIconTheme: true !default;
+
+@if $matIconTheme == true {
+  .mat-icon {
+    &[svgicon] {
+      line-height: 0;
+
+      svg {
+        path {
+          fill: color(accent, 500);
+        }
+      }
+
+      &[color="grey"] {
+        svg {
+          path {
+            fill: #ccc;
+          }
+        }
+      }
+
+      &.small {
+        svg {
+          width: 24px;
+          height: 24px;
+          transform: scale(0.7);
+          line-height: normal;
+        }
+      }
+    }
+
+    &[svgicon="alert"] {
+      svg {
+        border-radius: 50%;
+        background: #fde5e5;
+
+        path {
+          fill: #f38280;
+          transform: translate(-2px, -2px) scale(1.18);
+        }
+      }
+    }
+
+    &[color="light"] {
+      svg {
+        path {
+          fill: #fff;
+        }
+      }
+    }
+  }
+}

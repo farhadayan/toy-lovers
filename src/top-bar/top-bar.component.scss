@@ -1,0 +1,118 @@
+:host {
+  height: 52px;
+  width: 98vw;
+  display: flex;
+  position: sticky;
+}
+
+.mat-mdc-icon-button.mat-mdc-button-base {
+  padding: 4px 12px;
+}
+
+.login {
+  margin: 10px auto;
+  border: 1px solid green;
+  border-radius: 5px;
+  height: 36px;
+  position: absolute;
+  right: 10px;
+  button {
+    display: inline-flex;
+    height: 24px;
+    color: #106060;
+
+    mat-icon {
+      position: absolute;
+      top: 24px;
+      right: 0;
+      border-radius: 50px;
+      background: #f1f1f1;
+    }
+  }
+}
+
+.clear-btn {
+  font: font(button);
+  padding: 12px 16px;
+  color: #757575;
+  cursor: pointer;
+  transition: color 150ms linear;
+
+  &:hover {
+    color: #242424;
+  }
+}
+
+.loging {
+  width: 180px;
+  display: inline-flex;
+  button {
+    position: relative;
+  }
+}
+
+.mat-mdc-text-field {
+  align-items: center;
+}
+
+.text-box {
+  // width: 650px !important;
+  height: 55px;
+  display: flex;
+  flex-flow: column;
+}
+
+.top-bar {
+  display: flex;
+  width:100%;
+  @media screen and (max-width: 650px) {
+    margin: 155px auto;
+    overflow: auto;
+    display: grid;
+    width: auto;
+    height: auto;
+  }
+
+  .login-register {
+    margin: 5px auto;
+  }
+
+  &__search-content {
+    margin:10px auto;
+    width: 60%;
+    
+    &__search-field {
+      margin-right: 12px;
+    }
+  }
+  .navigation {
+    display: inline-flex;
+    align-items: center;
+  }
+  .nav-item {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 300ms linear, padding 300ms linear;
+    white-space: nowrap;
+    color: #f7f7f7;
+    img {
+      width: 0px;
+    }
+
+    &:active {
+      color: #e42600;
+    }
+
+    &:hover {
+      color: #f1f1f1;
+    }
+  }
+
+  //replace with curve image and it is gonna be logo link to home page
+  .restaurant-title {
+    margin: auto;
+    width: 180px;
+    cursor: pointer;
+  }
+}
