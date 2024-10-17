@@ -34,7 +34,9 @@ export class AppComponent implements OnDestroy {
 
   constructor(
     breakpointObserver: BreakpointObserver,
-    _iconsService: IconsService
+    _iconsService: IconsService,
+    
+
   ) {
      _iconsService.init();
      breakpointObserver
@@ -59,7 +61,7 @@ export class AppComponent implements OnDestroy {
   ngOnDestroy() {
     this.destroyed.next();
     this.destroyed.complete();
-  }
+    }
 
   logIn() {}
 } 

@@ -149,6 +149,11 @@ export class TopBarComponent {
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((response) => {
         if (response === 'success') {
+          setTimeout(()=>{
+            //localStorage.setItem('authToken', response)
+            sessionStorage.setItem('authToken', response)
+        })
+          
           console.log('ok: ', this.userState.userStateSignal(),this.userState.fetchUserRole());
         }
       });
@@ -169,6 +174,8 @@ export class TopBarComponent {
 
   logout() {
     this.userState.userStateSignal.set(null);
-    localStorage.removeItem('authToken')
+   // localStorage.removeItem('authToken')
+    sessionStorage.removeItem('authToken')
+    this.router.navigate(['/'])
   }
 }

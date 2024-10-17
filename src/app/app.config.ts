@@ -10,6 +10,7 @@ import {
   withInterceptors,
   withInterceptorsFromDi,
 } from '@angular/common/http';
+import { JWT_OPTIONS, JwtHelperService, JwtModule } from '@auth0/angular-jwt';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -18,5 +19,8 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(withInterceptorsFromDi(), withInterceptors([])),
     provideRouter(routes),
     MatDialogModule,
+    // JwtHelperService,
+    // { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
+
   ],
 };

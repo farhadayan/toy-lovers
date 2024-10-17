@@ -41,6 +41,10 @@ export const routes: Routes = [
         path: 'settings',
         loadComponent: () => import('./my-page/settings/settings.component'),
       },
+      {
+        path: 'editimage',
+        loadComponent: () => import('./my-page/editimage/editimage.component')
+      },
     ],
   },
   {

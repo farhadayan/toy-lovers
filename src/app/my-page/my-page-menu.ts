@@ -21,4 +21,10 @@ export const MY_PAGE_NAVITEMS: NavigationConfigLink[] = [
     link: 'settings',
     title: 'Settings',
   },
+  {
+    icon: 'assets/images/settings.jpg',
+    link: 'editimage',
+    title: 'Edit Image',
+  }
+  
 ];
