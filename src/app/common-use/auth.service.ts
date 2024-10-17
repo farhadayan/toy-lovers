@@ -1,14 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
+import { JwtHelperService  } from '@auth0/angular-jwt';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor( private http: HttpClient ) {}
+  constructor( private http: HttpClient,
+    private jwtHelper: JwtHelperService
+   ) {}
 
   apiUrl: string='localhost:4200';
 
@@ -18,12 +20,22 @@ export class AuthService {
 
 
   public isAuthenticated() : boolean {
-    const token = localStorage.getItem('authToken');
-    const helper = new JwtHelperService();
-    const isExpired = helper.isTokenExpired(token);
-    console.log("isAuthen: ",token,"hel:", helper,"exp:", localStorage.key)
+        
+    const token = sessionStorage.getItem('authToken');
     
-    return !isExpired;
+    const isExpired = this.jwtHelper.isTokenExpired(token);
+    console.log("suc: ",token, "exp:", isExpired)
+    
+    if (token==='success')
+    {
+      console.log("isAuthen suc: ",token, "exp:", sessionStorage.getItem('authToken'))
+      return true
+    }
+    
+    return false
+
+    
+    //return !isExpired;
   }
 
 

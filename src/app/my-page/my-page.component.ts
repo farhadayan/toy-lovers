@@ -13,7 +13,7 @@ const fb = new FormBuilder();
 @Component({
   selector: 'app-my-page',
   standalone: true,
-imports: [CommonModule, MatTabsModule, RouterModule, MatMenuModule, MatIconModule],
+  imports: [CommonModule, MatTabsModule, RouterModule, MatMenuModule, MatIconModule],
   templateUrl: './my-page.component.html',
   styleUrl: './my-page.component.scss',
 })
@@ -24,6 +24,5 @@ export default class MyPageComponent {
   
   navItems = MY_PAGE_NAVITEMS;
   toyForm = fb.group({});
-
 
 }
