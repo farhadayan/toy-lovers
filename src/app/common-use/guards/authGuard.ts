@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { ActivatedRouteSnapshot, Router } from "@angular/router";
 import { AuthService } from "../auth.service";
 import { Observable } from "rxjs";
+import { UserState } from "../../../top-bar/state/user-state";
 
 
 @Injectable({
@@ -9,21 +10,16 @@ import { Observable } from "rxjs";
 })
 
 export class AuthGuard {
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router,
+    private userState: UserState,
 
-  // canActivate(): boolean {
-  //   if (this.authService.isAuthenticated()) {
-  //     return true;
-  //   } else {
-  //     this.router.navigate(['/']);
-  //     return false;
-  //   }
-  // }
+
+  ) {}
+
 
   canActivate(route: ActivatedRouteSnapshot) {
-    if (this.authService.isAuthenticated())
-    {
-      
+    if (this.authService.isAuthenticated() && this.userState.fetchUserState())
+    {      
       return true
     }
     this.router.navigate(['/'])

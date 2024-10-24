@@ -21,7 +21,7 @@ import {
 
 import { NAVIGATION_CONFIG, NavigationConfigLink } from './navigation.config';
 import { MatDialog } from '@angular/material/dialog';
-import { LoginComponent } from '../app/login/login.component';
+import  LoginComponent from '../app/login/login.component';
 import { UserState } from './state/user-state';
 import RegisterPageComponent from '../app/common-use/register-page/register-page.component';
 import { ToyType, ToyTypes } from './state/toy-type.state';
@@ -134,29 +134,30 @@ export class TopBarComponent {
   }
 
   login() {
-    const dialogRef = this.dialog.open(LoginComponent, {
-      height: 'auto',
-      width: 'auto',
-      autoFocus: false,
-      disableClose: true,
-      position: {
-        top: '10vh',
-      },
-    });
+    this.router.navigate(['login'])
+    // const dialogRef = this.dialog.open(LoginComponent, {
+    //   height: 'auto',
+    //   width: 'auto',
+    //   autoFocus: false,
+    //   disableClose: true,
+    //   position: {
+    //     top: '10vh',
+    //   },
+    // });
 
-    dialogRef
-      .afterClosed()
-      .pipe(takeUntil(this.unsubscribe$))
-      .subscribe((response) => {
-        if (response === 'success') {
-          setTimeout(()=>{
-            //localStorage.setItem('authToken', response)
-            sessionStorage.setItem('authToken', response)
-        })
+    // dialogRef
+    //   .afterClosed()
+    //   .pipe(takeUntil(this.unsubscribe$))
+    //   .subscribe((response) => {
+    //     if (response === 'success') {
+    //       setTimeout(()=>{
+    //         //localStorage.setItem('authToken', response)
+    //         sessionStorage.setItem('authToken', response)
+    //     })
           
-          console.log('ok: ', this.userState.userStateSignal(),this.userState.fetchUserRole());
-        }
-      });
+    //       console.log('ok: ', this.userState.userStateSignal(),this.userState.fetchUserRole());
+    //     }
+    //   });
   }
 
   loadRegisterPage() {
@@ -174,7 +175,8 @@ export class TopBarComponent {
 
   logout() {
     this.userState.userStateSignal.set(null);
-   // localStorage.removeItem('authToken')
+    localStorage.removeItem('username')
+    localStorage.removeItem('password')
     sessionStorage.removeItem('authToken')
     this.router.navigate(['/'])
   }

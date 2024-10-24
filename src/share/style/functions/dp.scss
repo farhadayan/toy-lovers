@@ -1,0 +1,18 @@
+@use 'sass:list';
+@use '@angular/material' as mat;
+
+// $density: mat.get-density-config();
+// @warn $density;
+
+// Gutter
+$base-dp: 4px;
+
+@function dp($listTimes) {
+  $new-dp-list: ();
+
+  @each $times in $listTimes {
+    $new-dp-list: list.append($new-dp-list, $times * $base-dp, 'space');
+  }
+
+  @return $new-dp-list;
+}

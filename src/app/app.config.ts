@@ -1,5 +1,5 @@
 import { ApplicationConfig } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import { provideRouter, withDisabledInitialNavigation, withEnabledBlockingInitialNavigation } from '@angular/router';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { routes } from './app.routes';
 
@@ -10,7 +10,8 @@ import {
   withInterceptors,
   withInterceptorsFromDi,
 } from '@angular/common/http';
-import { JWT_OPTIONS, JwtHelperService, JwtModule } from '@auth0/angular-jwt';
+
+import { GoogleLoginProvider, SocialAuthServiceConfig } from '@abacritt/angularx-social-login';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -19,8 +20,21 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(withInterceptorsFromDi(), withInterceptors([])),
     provideRouter(routes),
     MatDialogModule,
-    // JwtHelperService,
-    // { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
+    {
+       provide: "SocialAuthServiceConfig",
+            useValue: {
+              autoLogin: false,
+              providers: [
+                {
+                  id: GoogleLoginProvider.PROVIDER_ID,
+                  provider: new GoogleLoginProvider('695604882185-9pelmmtm8qdtcjutaa25in8755it6vpm.apps.googleusercontent.com')
 
-  ],
+                },
+              ],
+              onError: (err) => {
+                console.error(err);
+              },
+            } as SocialAuthServiceConfig,
+          }
+   ],
 };

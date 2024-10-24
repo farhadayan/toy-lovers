@@ -1,0 +1,74 @@
+$matCheckboxPpTheme: true !default;
+
+@if $matCheckboxPpTheme == true {
+  .mat-mdc-checkbox {
+    &.large {
+      $size: 24px;
+      .mat-checkbox-inner-container {
+        width: $size;
+        height: $size;
+      }
+
+      .mdc-checkbox {
+        flex: 0 0 $size;
+        width: $size;
+        height: $size;
+        padding: calc((var(--mdc-checkbox-state-layer-size, 40px) - $size) / 2);
+        // margin: calc((var(--mdc-checkbox-state-layer-size, 40px) - var(--mdc-checkbox-state-layer-size, 40px)) / 2);
+      }
+
+      .mdc-checkbox__background {
+        width: $size;
+        height: $size;
+        top: calc((var(--mdc-checkbox-state-layer-size, 40px) - $size) / 2);
+        left: calc((var(--mdc-checkbox-state-layer-size, 40px) - $size) / 2);
+      }
+    }
+
+    &.small {
+      $size: 16px;
+      .mat-checkbox-inner-container {
+        width: $size;
+        height: $size;
+      }
+
+      .mdc-checkbox {
+        flex: 0 0 $size;
+        width: $size;
+        height: $size;
+        padding: calc((var(--mdc-checkbox-state-layer-size, 40px) - $size) / 2);
+        // margin: calc((var(--mdc-checkbox-state-layer-size, 40px) - var(--mdc-checkbox-state-layer-size, 40px)) / 2);
+      }
+      .mdc-label {
+        font-size: small;
+      }
+
+      .mdc-checkbox__background {
+        width: $size;
+        height: $size;
+        top: calc((var(--mdc-checkbox-state-layer-size, 40px) - $size) / 2);
+        left: calc((var(--mdc-checkbox-state-layer-size, 40px) - $size) / 2);
+      }
+    }
+
+    .mdc-checkbox .mdc-checkbox__native-control {
+      &:enabled:checked ~ .mdc-checkbox__background,
+      &:enabled:indeterminate ~ .mdc-checkbox__background,
+      &[data-indeterminate='true']:enabled ~ .mdc-checkbox__background {
+        border-color: #4aa09b;
+        background-color: #4aa09b;
+      }
+    }
+
+    &:hover {
+      .mdc-checkbox .mdc-checkbox__native-control {
+        &:enabled:checked ~ .mdc-checkbox__background,
+        &:enabled:indeterminate ~ .mdc-checkbox__background,
+        &[data-indeterminate='true']:enabled ~ .mdc-checkbox__background {
+          border-color: #158882;
+          background-color: #158882;
+        }
+      }
+    }
+  }
+}

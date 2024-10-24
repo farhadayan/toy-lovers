@@ -1,7 +1,7 @@
 html,
 body {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: "Helvetica Neue", sans-serif;
 }
 
 footer {
@@ -58,8 +58,7 @@ main {
 .divider {
   width: 98vw;
   height: 1px;
-  //background: rgb(var(--greyscale-level-1));
-  background: #e6e6e6;
+  background: rgb(var(--greyscale-level-4));
   margin-inline: 0.5rem;
   margin-bottom: 5px;
 }

@@ -21,6 +21,11 @@ export const routes: Routes = [
       import('./toy-browse/toy-browse.component'),
   },
   {
+    path: 'login',
+    loadComponent: () =>  import('./login/login.component'),
+  },
+  
+  {
     path: 'my-page',
     canActivate: [AuthGuard],
     loadComponent: () => import('./my-page/my-page.component'),

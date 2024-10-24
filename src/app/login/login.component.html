@@ -1,39 +1,64 @@
 <div class="login-window">
-  <div class="title">User login</div>
-  <form class="login-form" [formGroup]="login" autocomplete="off">
-    <mat-form-field class="small">
-      <label>User name</label>
-      <input type="text" matInput formControlName="username" />
+  <div class="title">Sign in to Toy-Lovers</div>
+  <form class="login-form" [formGroup]="loginForm" autocomplete="off">
+    <mat-form-field class="mat-form" appearance="outline">
+      
+      <input type="text" matInput placeholder="User" formControlName="username" />
     </mat-form-field>
-    <mat-form-field>
-      <label>Password</label>
+    <mat-form-field class="mat-form" appearance="outline">
+      
       <input
         matInput
+        placeholder="Password"
         [type]="hide ? 'password' : 'text'"
         formControlName="password"
       />
-
-      <mat-hint *ngIf="!passwordInput?.value">Enter your password</mat-hint>
+      
+      <!-- <mat-hint *ngIf="!passwordInput?.value"></mat-hint> -->
       <button mat-icon-button matSuffix (click)="hide = !hide">
         <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
       </button>
     </mat-form-field>
   </form>
-  <div *ngIf="login.invalid || login.pristine" class="error-message">
-    Please enter valid credentials.
-  </div>
+  <mat-checkbox class="small" (click)="rememberMe()" >
+      Remember me
+  </mat-checkbox>
+ 
 
   <div class="buttons">
     <button
       mat-raised-button
-      (click)="okLogin()"
-      color="primary"
-      [disabled]="login.invalid || login.pristine"
-      >
-      Ok
+      (click) = "okLogin()"
+      [disabled]="loginForm.invalid || loginForm.pristine">
+        Sign In
     </button>
     <button mat-raised-button (click)="cancelLogin()">Cancel</button>
+    <button mat-flat-button (click)="forgotPassword()">Forgotten password</button>
+
+  <!-- </div>
+  <div class="card-block"> -->
+    <!-- Copied from Google to sign in   -->
+    <div id="g_id_onload"
+      data-client_id="86798601559-taq1m34go3tn6kjjoqab09o9r204btjf.apps.googleusercontent.com"
+      data-context="signin"
+      data-ux_mode="popup"
+      data-login_uri="http://localhost:4200"
+      data-auto_prompt="false">
   </div>
 
-  <button mat-flat-button (click)="forgotPassword()">Forgotten password</button>
+  <div class="g_id_signin"
+      data-type="standard"
+      data-shape="rectangular"
+      data-theme="outline"
+      data-text="signin_with"
+      data-size="large"
+      data-logo_alignment="left">
+  </div>
+</div>
+<!-- 
+    <div *ngIf="user" class="card text-center">
+      <div class="card-block">
+        <button class="btn btn-danger" (click)="signOut()">Sign out</button>
+      </div>
+    </div> -->
 </div>
