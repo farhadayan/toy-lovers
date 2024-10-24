@@ -1,7 +1,14 @@
-@import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
-@import "share/style/material/material.scss";
-@import "share/style/core/core.scss";
-//@import "share/style/functions/typography.scss";
+
+
+
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import "./share/style/material/material.scss";
+@import "./share/style/core/core.scss";
+
+@import "./share/style/functions/typography.scss";
+@import './share/style/functions/color.scss';
+@import './share/style/functions/dp.scss';
+
 .basic-container {
   padding: 30px;
 }

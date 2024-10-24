@@ -1,7 +1,7 @@
 @use 'sass:map';
 @use '@angular/material' as mat;
 
-$typography-config: mat.get-typography-config($theme);
+//$typography-config: mat.get-typography-config($theme);
 
 $base-font-style: body-2;
 

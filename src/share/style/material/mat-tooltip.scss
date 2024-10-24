@@ -1,0 +1,24 @@
+$matTooltipPpTheme: true !default;
+
+@if $matTooltipPpTheme == true {
+  .mat-mdc-tooltip-trigger {
+    cursor: pointer;
+  }
+
+  .mdc-tooltip__surface {
+    font: font(caption);
+    line-height: normal;
+    background-color: #242424;
+    padding: 20px 24px;
+    border-radius: 8px;
+  }
+
+  .mdc-tooltip.single-line {
+    white-space: nowrap;
+
+    .mdc-tooltip__surface {
+      max-width: initial;
+      padding: 12px 16px;
+    }
+  }
+}

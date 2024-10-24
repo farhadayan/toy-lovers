@@ -62,7 +62,7 @@ $matButtonTheme: true !default;
       &.rtl {
         direction: rtl;
 
-        > .mat-icon {
+         .mat-icon {
           margin-right: -4px;
           margin-left: 8px;
         }
@@ -108,6 +108,7 @@ $matButtonTheme: true !default;
         text-decoration: none;
         color: #fff;
 
+        
         &[disabled] {
           color: #757575;
         }
@@ -160,5 +161,12 @@ $matButtonTheme: true !default;
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+
+
+@media only screen and (max-width: 425px) {
+  .mdc-button{
+    width: 50%;
   }
 }

@@ -1,6 +1,6 @@
 :host {
   height: 52px;
-  width: 98vw;
+  width: 99vw;
   display: flex;
   position: sticky;
 }
@@ -10,19 +10,20 @@
 }
 
 .login {
-  margin: 10px auto;
-  border: 1px solid green;
+  margin: 10px;
+  border: 1px solid #757575;
   border-radius: 5px;
   height: 36px;
-  position: absolute;
-  right: 10px;
+  white-space: nowrap;
+  
+  
   button {
-    display: inline-flex;
+    
     height: 24px;
     color: #106060;
 
     mat-icon {
-      position: absolute;
+      position: sticky;
       top: 24px;
       right: 0;
       border-radius: 50px;
@@ -55,34 +56,23 @@
   align-items: center;
 }
 
-.text-box {
-  // width: 650px !important;
-  height: 55px;
-  display: flex;
-  flex-flow: column;
-}
-
 .top-bar {
   display: flex;
-  width:100%;
-  @media screen and (max-width: 650px) {
-    margin: 155px auto;
-    overflow: auto;
-    display: grid;
-    width: auto;
-    height: auto;
-  }
-
+  width: calc(98vw);
+  white-space: nowrap;
+  
   .login-register {
     margin: 5px auto;
   }
 
   &__search-content {
     margin:10px auto;
-    width: 60%;
+    width: 70%;
+    white-space: nowrap;
     
     &__search-field {
       margin-right: 12px;
+      
     }
   }
   .navigation {
@@ -111,8 +101,50 @@
 
   //replace with curve image and it is gonna be logo link to home page
   .restaurant-title {
-    margin: auto;
+    margin-right: 10px;
     width: 180px;
     cursor: pointer;
   }
 }
+
+
+@media only screen and (max-width: 1024px) {
+  .navigation{
+    .restaurant-title {
+      margin-right: 10px;
+      width: calc(15vw);
+      cursor: pointer;
+    }
+  }
+}
+
+
+@media only screen and (max-width: 768px) {
+  .navigation{
+  .restaurant-title {
+    width: calc(10vw);
+    cursor: pointer;
+  }
+}
+  .login-register {
+    display: flex;
+    
+  }
+
+  .top-bar__search-content {
+    margin:10px auto;
+    width: 40%;
+    display: grid;
+    white-space: normal;
+    
+    &__search-field {
+      white-space: normal;
+      margin: 2px;
+    }
+    .hideonphone{
+      display: none;
+    }
+  }
+
+}
+

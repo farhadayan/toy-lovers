@@ -48,5 +48,16 @@ $matIconTheme: true !default;
         }
       }
     }
+
+    &[button]{
+      &.xsmall {
+        svg {
+          width: 20px;
+          height: 20px;
+          transform: scale(0.7);
+          line-height: normal;
+        }
+      }
+    }
   }
 }
